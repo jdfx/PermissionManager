@@ -26,7 +26,7 @@ class UserCrudController extends CrudController
         ]);
 
         //custom columns
-        $custom_columns = config('backpack.base.route_prefix');
+        $custom_columns = config('laravel-permission.column_names');
 
         foreach($custom_columns as $column) {
 
