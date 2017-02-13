@@ -19,16 +19,24 @@ class UserCrudController extends CrudController
 
         $this->crud->setColumns([
             [
-                'name'  => 'name',
-                'label' => trans('backpack::permissionmanager.name'),
-                'type'  => 'text',
-            ],
-            [
                 'name'  => 'email',
                 'label' => trans('backpack::permissionmanager.email'),
                 'type'  => 'email',
             ],
         ]);
+
+        //custom columns
+        $custom_columns = config('backpack.base.route_prefix');
+
+        foreach($custom_columns as $column) {
+
+            $this->crud->addColumn([
+                'name'  => $column["name"],
+                'label' => $column["label"],
+                'type'  => $column["type"],
+            ]);
+
+        }
 
         $this->crud->addColumn([ // n-n relationship (with pivot table)
            'label'     => trans('backpack::permissionmanager.roles'), // Table column heading
@@ -48,12 +56,18 @@ class UserCrudController extends CrudController
            'model'     => "Backpack\PermissionManager\app\Models\Permission", // foreign key model
         ]);
 
+        // editable custom fields
+        foreach($custom_columns as $column) {
+
+            $this->crud->addFields([
+                'name'  => $column["name"],
+                'label' => $column["label"],
+                'type'  => $column["type"],
+            ]);
+
+        }
+
         $this->crud->addFields([
-            [
-                'name'  => 'name',
-                'label' => trans('backpack::permissionmanager.name'),
-                'type'  => 'text',
-            ],
             [
                 'name'  => 'email',
                 'label' => trans('backpack::permissionmanager.email'),

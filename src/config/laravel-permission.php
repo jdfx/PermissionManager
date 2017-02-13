@@ -129,5 +129,29 @@ return [
         'role_has_permissions' => 'permission_roles',
 
     ],
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Columns
+    |--------------------------------------------------------------------------
+    */
+    'column_names' => [
 
+        /*
+        |--------------------------------------------------------------------------
+        | Custom column names
+        |--------------------------------------------------------------------------
+        |
+        | You can supply some alternative column names to show / edit in addition to
+        | the usual columns provided by Laravel. For example you may wish to have
+        | Firstname & Lastname, instead of Name. You can add as many arrays as you
+        | like. Other columns such as password & email are still required.
+        |
+        */
+
+        [
+            "name" => "name",
+            "label" => "Name",
+            "type" => "text"
+        ]
+    ]
 ];
