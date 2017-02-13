@@ -17,14 +17,6 @@ class UserCrudController extends CrudController
         $this->crud->setEntityNameStrings(trans('backpack::permissionmanager.user'), trans('backpack::permissionmanager.users'));
         $this->crud->setRoute(config('backpack.base.route_prefix').'/user');
 
-        $this->crud->setColumns([
-            [
-                'name'  => 'email',
-                'label' => trans('backpack::permissionmanager.email'),
-                'type'  => 'email',
-            ],
-        ]);
-
         //custom columns
         $custom_columns = config('laravel-permission.column_names');
 
@@ -37,6 +29,14 @@ class UserCrudController extends CrudController
             ]);
 
         }
+
+        $this->crud->setColumns([
+            [
+                'name'  => 'email',
+                'label' => trans('backpack::permissionmanager.email'),
+                'type'  => 'email',
+            ],
+        ]);
 
         $this->crud->addColumn([ // n-n relationship (with pivot table)
            'label'     => trans('backpack::permissionmanager.roles'), // Table column heading
