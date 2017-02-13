@@ -57,16 +57,6 @@ class UserCrudController extends CrudController
            'model'     => "Backpack\PermissionManager\app\Models\Permission", // foreign key model
         ]);
 
-        // editable custom fields
-        foreach($custom_columns as $column) {
-
-            $this->crud->addFields([
-                'name'  => $column["name"],
-                'label' => $column["label"],
-                'type'  => $column["type"],
-            ]);
-
-        }
 
         $this->crud->addFields([
             [
