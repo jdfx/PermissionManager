@@ -26,7 +26,8 @@ class UserStoreCrudRequest extends FormRequest
     {
         $rules = [
             'email'    => 'required|unique:users,email',
-            'name'     => 'required',
+            'firstname'     => 'required',
+            'lastname'  => 'required',
             'password' => 'required|confirmed',
             ];
 
